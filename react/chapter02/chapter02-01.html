@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>chapter02-01</title>
+</head>
+<body>
+	<div id="root"></div>
+	
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<!-- 바벨 -->
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+	<script>
+		/* JSX를 사용하는 리액트
+			createElement 함수를 리액트와 동작을 살펴보는 데 좋은 방법이지만
+			 리액트 개발자들이 실제로 해야하는 일과는 거리가 있다.
+			 리액트를 활용해 효과적으로 일하려면 JSX라는 다른 요소가 필요하다.
+			JSX는 자바스크립트의 JS와 XML의 X와 합친 말
+			 JSX는 자바스크립트 코드 안에서 바로 태그 기반의 구문을 써서 리액트
+			 엘리먼트를 정의할 수 있게 해주는 자바스크립트 확장이다.
+		*/
+		/* 바벨
+			어떤 브라우버도 JSX를 지원하지 않는다. JSX와 자바스크팁트 코드를 
+			 브라우저가 해석할 수 있는 코드로 변환해줄 수단이 필요 
+			그 변환 해줄 수단이 바벨(https://babeljs.io/)
+			가장 간단한 방법은 바벨 CDN링크를 직접 html에 포함시킨다.
+			이렇게 하면 타입이 "text/babel"인 script블록을 바벨이 컴파일 해준다. 	
+		*/
+	</script>
+	<script type="text/babel">
+		function Menu(props){
+			return(
+				<article>
+					<header>
+						<h1>{props.title}</h1>
+					</header>	
+				</article>
+			)
+		}
+		// props에서 title을 구조분해 할 수 있다.
+		// const {a,b}={a:1,b:2}
+		function Menu1({title,subtitle}){
+			return(
+				<article>
+					<header>
+						<h1>{title}</h1>
+						<h2>{subtitle}</h2>
+					</header>	
+				</article>
+			)
+		}
+		ReactDOM.render(
+			[<Menu title="제목1"/>,<Menu title="제목2"/>],
+			document.querySelector("#root")
+		)
+
+		function IngredientsList(){
+			return(<h1></h1>)
+		}
+		/* JSX 팁
+			- 내포된 컴포넌트 
+			JSX에서는 다른 컴포넌트의 자식으로 컴포넌트를 추가할 수 있다.
+			예를 들어 IngredientsList안에 Ingredient를 여러번 추가할 수 있다.
+			 <IngredientsList/>
+			 <IngredientsList>
+			 	 <Ingredient />
+			 	 <Ingredient />
+				 <Ingredient />
+			 </Ingredient>
+			- className
+			자바스크립트에서 clss가 예약어이므로 class속성 대신 className을 사용
+			<h1 className="fancy">구운 연어</h1>
+			- 자바스크립트 식
+			중괄호로 자바스크립트 식을 감싸면 중괄호 안의 식을 평가해서 결과값을
+			 사용해야 한다는 뜻
+			예를 들어 엘리멘트 안에 title 변수 값을 출력하고 싶다면 자바스크립트
+			 식을 사용해 값을 넣을 수 있다. 변수를 평가한 값이 엘리먼트 안에 
+			 들어간다.
+			<h1>{title}</h1>
+			다른 타입의 값도 자바스크립트 식안에 널어야 한다.
+			<input type="checkbox" defaultChecked={false}/>
+			- 평가
+			중괄호 안에 들어간 자바스크립트 코드는 그 값을 평가(치환)받는다
+			이는 덧셈이나 문자열 이어붙임 들의 여러 연산이 일어날 수 있다.
+			또 자바스크립트 식 안에 함수 호출 구문이 있다면 그 함수가 호출된다는
+			 뜻이기도 하다.
+		*/
+		/* 배열을 JSX로 매핑하기 */
+		function IngredientsList(props){
+			return (
+				<ul>
+					{props.items.map((ingredient,i)=>{
+						<li key={i}>{ingredient}</li>
+					})}
+				</ul>
+		)
+		}
+	</script>
+</body>
+</html>

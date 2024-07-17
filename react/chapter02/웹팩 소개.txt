@@ -1,0 +1,7 @@
+웹 팩 소개
+
+Node.js 설치 
+컴퓨터 OS에서 javascript의 실행 환경
+
+https://nodejs.org/en 접속
+다운로드

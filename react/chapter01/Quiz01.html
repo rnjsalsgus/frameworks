@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Quiz01</title>
+</head>
+<body>
+	<div id="root"></div>
+	
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+	<script>
+		const items1=["가지","간장","설탕","식초","다진 마늘","버터"]
+		
+		const ingredient1=React.createElement(
+			"ul",
+			null,
+			items1.map((ingredient,i)=>React.createElement("li",{key:i},ingredient))
+		)
+		const items2=["돼지고기 앞다리살","배추김치","대파","청양고추","물","된장","들기름","설탕","다진마늘","후추"]
+		const ingredient2=React.createElement(
+			"ul",
+			null,
+			items2.map((ingredient,i)=>React.createElement("li",{key:i},ingredient)),
+		)
+		const items3=["팽이버섯","청양고추","식용유","다진마늘","고추가루","설탕","미원","진간장","굴소스","고추장","된장","물"]
+		
+		const ingredient3=React.createElement(
+			"ul",
+			null,
+			items3.map((ingredient,i)=>React.createElement("li",{key:i},ingredient)),
+			
+		)
+		ReactDOM.render([ingredient1,ingredient2,ingredient3],document.querySelector("#root"))
+		/* 애플리케이션을 개발 할 때
+			1.생각 나는 대로 코드를 작성
+			2.리팩토링을 통해 코드를 수정
+			
+			 리팩토링의 기준
+			1.반복되는 코드를 줄여야 된다.
+			2.코드들을 일률적으로 작성해야 된다.
+		*/
+	</script>
+</body>
+</html>
